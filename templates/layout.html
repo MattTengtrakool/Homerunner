@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- http://getbootstrap.com/docs/5.1/ -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>       <link href="static/styles.css" rel="stylesheet">
+
+        <title>{% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                  <!--<a class="navbar-brand" href="/">
+                    
+                  <span class="blue">C</span><span class="red">$</span><span class="yellow">5</span><span class="green">0</span> <span class="red">Finance</span></a>
+                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                 data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>-->
+                <table width="100%">
+                    <tr>
+                        <td style="background-color: rgba(17, 4, 4, 0.041);height:100px;" width="100%" class="wp-block-spacer" align="center">
+                            <img src="Logo.jpg" style="left: 0%; top: 0%; position: absolute;">
+                            <a class="nav-link text-dark" href="/" style="color:#ffffff;font-size:16px"> How we are responding to Covid-19?</a>
+            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" width="100%">
+                            <a class="navbar-brand" href="/" target="_self">Home</a>
+                            <a class="navbar-brand" href="/register" target="_self">Register</a>                            
+                            <a class="navbar-brand" href="/about" target="_self">About</a>
+                            <a class="navbar-brand" href="/contact" target="_self">Contact</a>
+                <div class="collapse navbar-collapse" id="navbar">
+                    {% if session["user_id"] %}
+                        <ul class="navbar-nav me-auto mt-2">
+                            <!-- <li class="nav-item"><a class="nav-link" href="/resource">Add Resource</a></li>                
+                            <li class="nav-item"><a class="nav-link" href="/fridge">Add Fridge</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="maps.html">Map</a></li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                        </ul>
+                    {% else %}    
+                        <!--ISSUES?<p>Not yet registered? <a class="btn btn-default" href="/register" >Click here &raquo;</a></p>
+                        <form id="Login" action="/login" method="post" style="border:1px solid #ccc"> -->
+                            <!-- <label for="email"><b>Email</b></label>
+                            <input type="text" placeholder="Enter Email" name="email" required pattern="^.+@.+\.[a-zA-Z]{2,63}$">
+                                -->
+                        <!--<input type="text" placeholder="Enter username" name="username" required ">
+                        <input type="password" placeholder="Enter Password" name="password" required>                                   
+                        <button class="btn btn-primary navbar-btn-signup dropdown-toggle" type="submit" id="singup-button" > Log in  </button>                         
+                    </form>
+                            
+                        <ul class="navbar-nav ms-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                        </ul>-->
+                    {% endif %}
+                </td>
+            </table>
+                </div>
+            </div>
+        </nav>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary mb-0 text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="container-fluid py-5 text-center">
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer class="mb-5 small text-center text-muted">
+            ©2021 by Homerunner <a href="mailto:carayu@college.harvard.edu">Cara Yu, Janny Liao, Matt Tengtrakool</a>
+        </footer>
+    </body>
+</html>

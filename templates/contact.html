@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<form id="frmcontact"  action="/contact" method="post">
+    <table>
+        <tr><td colspan=2>   <h1>Contact Us</h1></tr>
+        <tr><td valign="top" width="300px">
+            <address>
+                2995 Harvard Yard Mail Center<br>
+                1 Oxford Street<br>
+                Cambridge, MA 02138<br>
+                United States<br>
+                Phone number: <br>
+                425.555.0100
+            </address>
+
+            <address>
+                <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+                <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+            </address>
+        </td>
+            <td>
+             <table width="100%">
+                    <tr>
+                        <td><b>Name * </b</td>
+                         <td align="left"><input type="text" id="name" placeholder="Enter your name" required="" maxlength="100" value="">
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td><b>Email *</b></td>
+                        <td align="left"> <input type="text" placeholder="Enter Email" name="email" required="" pattern="^.+@.+\.[a-zA-Z]{2,63}$" maxlength="250" value="">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Phone</b> </td>
+                        <td align="left"><input name="phone" type="tel" placeholder="Enter your phone number" maxlength="50" value="">
+                        </td>
+
+                    </tr>
+                    <tr>
+                            <td><b>Subject </b></td>
+                             <td align="left">  <input name="title" type="text" placeholder="Subject" maxlength="250" value="">
+                            </td>
+                    </tr>
+                    <tr><td><Br></td><td></td></tr>
+                     <tr>
+                            <td><b>Message </b></td>
+                            <td align="left"> <textarea name="message" placeholder="Type your message here..." spellcheck="false" rows="4" cols="30"></textarea>
+                            </td>
+                    </tr>
+
+
+                    <tr><td></td>
+                    <td>
+                         <button type="submit" class="signupbtn">   Submit   </button>
+                    </td>
+
+
+                    </td></tr>
+                </table>
+            </td></tr>
+    </table>
+</form>
+{% endblock %}
