@@ -2,13 +2,13 @@
 import os
 
 from cs50 import SQL
-from flask import Flask, flash, redirect, jsonify, render_template, request, session
+from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
-from helpers import apology, login_required, lookup, usd
+from helpers import apology, login_required
 
 
 # Configure application
@@ -17,7 +17,7 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Custom filter
-app.jinja_env.filters["usd"] = usd
+#app.jinja_env.filters["usd"] = usd
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
@@ -37,6 +37,7 @@ def after_request(response):
     return response
 
 @app.route("/", methods=["GET", "POST"])
+#@login_required
 def index():
     return render_template("index.html")
 
@@ -49,7 +50,6 @@ def login():
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-
         # Ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username", 403)
@@ -97,7 +97,7 @@ def contact():
         phone = request.form.get("phone")
         title = request.form.get("title")
         message = request.form.get("message")
-        db.execute("INSERT INTO contact_message (name, email,  phone, title, message) VALUES (?, ?,?,?,?)", name, email,  phone, title, message)    
+        db.execute("INSERT INTO contact_message (name, email, phone, title, message) VALUES (?,?,?,?,?)", name, email, phone, title, message)    
         return redirect("/")
 
     else:
@@ -150,7 +150,7 @@ def register():
         password_hash = generate_password_hash(password)
 
         firstname = request.form.get("firstname")
-        lastName = request.form.get("lastName")
+        lastname = request.form.get("lastname")
         usertype = request.form.get("usertype")
         address = request.form.get("address")
         city = request.form.get("city")
@@ -164,9 +164,11 @@ def register():
 
         # Add user to users table
         
+        #db.execute("INSERT INTO users (username, hash, usertype, firstname, lastname, address, city, state, country, zipcode, phone, email, note) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", username, password_hash, usertype, firstname,lastname,address, city, state, country, zipcode, phone, email, note)
+
         try:
-            id =db.execute("INSERT INTO users (username, hash,usertype, firstname,lastName, address, city, state, country, zipcode, phone, email, note) VALUES (?, ?,?,?,?,?,?, ?,?,?,?,?,?)", username, password_hash, usertype, firstname,lastName,address, city, state, country, zipcode, phone, email, note)
-         
+            id = db.execute("INSERT INTO users (username, hash, usertype, firstname, lastname, address, city, state, country, zipcode, phone, email, note) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", username, password_hash, usertype, firstname,lastname,address, city, state, country, zipcode, phone, email, note)
+
         except ValueError:
             return apology("username taken")
 
@@ -175,22 +177,22 @@ def register():
 
         # Let user know they're registered
         flash("Registered!")
-        return redirect("/")   
+
+        return redirect("/")
        
     else:
-
         return render_template("register.html")
 
 
-def errorhandler(e):
-    """Handle error"""
-    if not isinstance(e, HTTPException):
-        e = InternalServerError()
-    return apology(e.name, e.code)
+#def errorhandler(e):
+    #"""Handle error"""
+    #if not isinstance(e, HTTPException):
+        #e = InternalServerError()
+    #return apology(e.name, e.code)
 
 
-# Listen for errors
-for code in default_exceptions:
-    app.errorhandler(code)(errorhandler)
+#Listen for errors
+#for code in default_exceptions:
+    #app.errorhandler(code)(errorhandler)
 
 
