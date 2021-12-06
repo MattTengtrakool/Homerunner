@@ -35,17 +35,42 @@ function initMap() {
             icon: image, 
             shape: shape,
           });
-            $.ajax({
+            /*$.ajax({
                     url: "/function_url",
                     type: 'POST',
                     data: JSON.stringify(pos),   // converts js value to JSON string
                     })
                     .done(function(result){     // on success get the return object from server
                         console.log(result)     // do whatever with it. In this case see it in console
-                    })
+                    })*/
         });
     } else {
       // Browser doesn't support Geolocation
       alert("Browser doesn't support!");
     }
+}
+
+function pass_values() {
+   var pass_to_python = pos
+
+                $.ajax(
+                {
+                    type:'POST',
+                    contentType:'application/json;charset-utf-08',
+                    dataType:'json',
+                    url:'http://127.0.0.1:5000/pass_val?value='+pass_to_python ,
+                    success:function (data) {
+                        var reply=data.reply;
+                        if (reply=="success")
+                        {
+                            return;
+                        }
+                        else
+                            {
+                            alert("some error ocured in session agent")
+                            }
+
+                    }
+                }
+            );
 }
