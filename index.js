@@ -35,6 +35,14 @@ function initMap() {
             icon: image, 
             shape: shape,
           });
+            $.ajax({
+                    url: Flask.url_for('my_function'),
+                    type: 'POST',
+                    data: JSON.stringify(pos),   // converts js value to JSON string
+                    })
+                    .done(function(result){     // on success get the return object from server
+                        console.log(result)     // do whatever with it. In this case see it in console
+                    })
         });
     } else {
       // Browser doesn't support Geolocation
