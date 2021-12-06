@@ -36,7 +36,7 @@ function initMap() {
             shape: shape,
           });
             $.ajax({
-                    url: Flask.url_for('my_function'),
+                    url: "/function_url",
                     type: 'POST',
                     data: JSON.stringify(pos),   // converts js value to JSON string
                     })
