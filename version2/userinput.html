@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    User Input
+{% endblock %}
+
+{% block main %}
+            <!-- Creating a form for others to log location and resource -->
+          <div class = "container">
+            <form>
+                <label for='username'>Username</label>
+                <input type='text' id='username' name='username' placeholder='Your Username'>
+
+                <label for='resource'>Resource</label>
+                <input type='text' id='resource' name='resource' placeholder='Resource'>
+
+                <!--<label for='location'>Location</label>
+                <input type='text' id='location' name='location' placeholder='location'> -->
+
+                <input type = "hidden" id = "location1" name = "location1" value = "something" />
+
+                <button id='getCurrentLocation' onclick="getLocation()">Set Current Location</button>   --->
+
+                <button id='submit'>Submit</button>      
+            </form>
+            <p id="demo"></p>
+          </div>
+{% endblock %}
+            <script>
+                var x = document.getElementById("demo");
+                
+                function getLocation() {
+                  if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(pushPosition);
+                  } else { 
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                  }
+                }
+                
+                function pushPosition(position) {
+                  document.getElementById("location1").value = position.coords
+                }
+            </script>
+        </div> 
+        <!-- Creating a button to return to the home page -->
+        <!--- <div class='text-center m-4'>
+            <a href="maps.html" class="btn btn-warning btn-lg">Return to Maps</a>
+        </div> --->

@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+    * {box-sizing: border-box;}
+    
+    input[type=text], select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+    
+    input[type=submit] {
+      background-color: #04AA6D;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+    
+    .container {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    </style>
+<h2>Contact Us</h2>
+<h3>{{ message }}</h3>
+
+<form id="frmcontact"  action="/contact" method="post">
+    <table>
+      
+        <tr><td valign="top" width="300px">
+            <address>
+                2995 Harvard Yard Mail Center<br>
+                1 Oxford Street<br>
+                Cambridge, MA 02138<br>
+                United States<br>
+                Phone number: <br>
+                425.555.0100
+            </address>
+
+            <address>
+                <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+                <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+            </address>
+        </td>
+            <td>      
+               
+
+                <div class="container">
+                 
+                    <label for="name">Name</label>
+                    <input type="text" name = "name" id="name" placeholder="Your name.." required maxlength="100" >
+                    <label for="email">Email</label>                   
+                    <input type="text" placeholder="Enter Email" name="email" id="email" required pattern="^.+@.+\.[a-zA-Z]{2,63}$" maxlength="250" >
+                    <label for="phone">Phone</label>
+                    <input name="phone" id="phone" type="tel" placeholder="Your phone number.." maxlength="50" >
+                    <label for="subject">Subject</label>
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                
+                    <!---<input type="submit" value="Submit"> --->
+                    <button id='submit'>Submit</button>   
+                    
+             
+                </div>
+       
+
+                <!---      <table width="100%">
+<tr><td> <tr>
+                        <td><b>Name * </b</td>
+                         <td align="left"><input type="text" id="name" placeholder="Enter your name" required maxlength="100" >
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td><b>Email *</b></td>
+                        <td align="left"> <input type="text" placeholder="Enter Email" name="email" id="email" required pattern="^.+@.+\.[a-zA-Z]{2,63}$" maxlength="250" >
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Phone</b> </td>
+                        <td align="left"><input name="phone" id="phone" type="tel" placeholder="Enter your phone number" maxlength="50" >
+                        </td>
+
+                    </tr>
+                    <tr>
+                            <td><b>Subject</b></td>
+                             <td align="left">  <input name="title" id="title" type="text" placeholder="Subject" maxlength="250" >
+                            </td>
+                    </tr>
+                    <tr><td><Br></td><td></td></tr>
+                     <tr>
+                            <td><b>Message </b></td>
+                            <td align="left"> <textarea name="message" id="message" placeholder="Type your message here..." rows="4" cols="30" value=""></textarea>
+                            </td>
+                    </tr>
+
+                    <tr><td></td>
+                    <td>
+                         <button type="submit" class="signupbtn">   Submit   </button>
+                    </td>
+
+                    </td></tr>
+
+                
+                </table>-->
+            </td></tr>
+    </table>
+</form>
+{% endblock %}

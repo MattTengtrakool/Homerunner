@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block main %} 
+    <div id="map">Please wait for the map to load.</div>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdbvKoi0WlEe1FRnQ-3LsH7YGoSjLsR6g&callback=initMap&v=weekly"
+      async
+    ></script>
+{% endblock %}
