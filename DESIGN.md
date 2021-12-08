@@ -1,0 +1,5 @@
+# Technical Tour of Homerunner
+
+  Foundationally, our project consists of taking in user input, storing, and displaying it using the google maps API. Additionally, it handles updates to this data and deletes requests when they are fulfilled through the donate tab.  Our tab structure changes based on login status, adding the ability for users who are logged in to donate or submit requests. The login pathway consists of a register and a login form connected to the user's database. We used the layout HTML to extend the templates for headers and themes while also using helpers.py and apology.html throughout the code. 
+
+  The map itself has markers and info box pop-ups listing each value at each location. These pop-ups list the request id information which users can use to claim requests. All requests are dynamically transacted in the requests table of the homerunner database. The donate page grabs the request information by request id and confirms this request with a user before completing the task. Additionally, we designed the interactive site content with bootstrap and CSS attributes. 
