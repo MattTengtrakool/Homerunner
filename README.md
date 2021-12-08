@@ -1,4 +1,4 @@
-# Homerunner
+# How to use Homerunner
 
 1. The landing page is the homepage with a carousel of photos and associated text. We have included a statement that encourages people to register along with a login button, a mission statement, and a covid response. On the top left-hand corner, we have our logo and on the right, we have buttons that will redirect the user to different pages on our site. 
 
